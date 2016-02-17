@@ -21,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startImagesActivity(int imageLoaderType) {
-        Intent startImagesActivityIntent = new Intent(this, FrescoActivity.class);
-        startImagesActivityIntent.putExtra(FrescoActivity.EXTRA_IMAGE_LOADER_TYPE, imageLoaderType);
+        Intent startImagesActivityIntent = new Intent(this, ImagesActivity.class);
+        startImagesActivityIntent.putExtra(ImagesActivity.EXTRA_IMAGE_LOADER_TYPE, imageLoaderType);
         startActivity(startImagesActivityIntent);
     }
 
@@ -30,12 +30,12 @@ public class MainActivity extends AppCompatActivity {
 
         public void onFrescoBtnClicked(View view) {
             Log.i("FRESCO", "fresco btn was pressed");
-            startImagesActivity(FrescoActivity.FRESCO_IMAGE_LOADER_TYPE);
+            startImagesActivity(ImagesActivity.FRESCO_IMAGE_LOADER_TYPE);
         }
 
         public void onGlideBtnClicked(View view) {
             Log.i("FRESCO", "glide btn was pressed");
-            startImagesActivity(FrescoActivity.GLIDE_IMAGE_LOADER_TYPE);
+            startImagesActivity(ImagesActivity.GLIDE_IMAGE_LOADER_TYPE);
         }
 
     }

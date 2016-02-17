@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FrescoTestApp</string>
+    <string name="app_name">Fresco VS Glide</string>
     <string name="images_activity_title">Images</string>
     <string name="images_activity_title_fresco">Fresco</string>
     <string name="images_activity_title_glide">Glide</string>

@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.FrescoActivity"
+            android:name=".view.ImagesActivity"
             android:label="@string/images_activity_title" />
     </application>
 
