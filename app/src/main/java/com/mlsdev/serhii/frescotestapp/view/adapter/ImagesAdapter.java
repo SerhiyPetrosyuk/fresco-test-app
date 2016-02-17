@@ -1,6 +1,5 @@
 package com.mlsdev.serhii.frescotestapp.view.adapter;
 
-import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,29 +10,26 @@ import com.mlsdev.serhii.frescotestapp.R;
 import com.mlsdev.serhii.frescotestapp.data.model.Data;
 import com.mlsdev.serhii.frescotestapp.data.model.Image;
 import com.mlsdev.serhii.frescotestapp.databinding.FrescoImageItemBinding;
-import com.mlsdev.serhii.frescotestapp.databinding.GlideImageItemBinding;
+import com.mlsdev.serhii.frescotestapp.databinding.GlideOrPicassoImageItemBinding;
 import com.mlsdev.serhii.frescotestapp.view.ImagesActivity;
 
 /**
  * Created by serhii on 16.02.16.
  */
 public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder> {
-    private Context mContext;
     private int mLayoutType;
     private Data mData;
 
-    public ImagesAdapter(Context context, int layoutType) {
-        mContext = context;
+    public ImagesAdapter(int layoutType) {
         mLayoutType = layoutType;
         mData = new Data();
-
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         int layoutResId = mLayoutType == ImagesActivity.FRESCO_IMAGE_LOADER_TYPE
                 ? R.layout.fresco_image_item
-                : R.layout.glide_image_item;
+                : R.layout.glide_or_picasso_image_item;
         View viewItem = LayoutInflater.from(parent.getContext()).inflate(layoutResId, parent, false);
         return new ViewHolder(viewItem);
     }
@@ -44,10 +40,12 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder
             return;
 
         Image image = mData.getItems().get(position).getPagemap().getImage().get(0);
-        if (mLayoutType == ImagesActivity.FRESCO_IMAGE_LOADER_TYPE)
+        if (mLayoutType == ImagesActivity.FRESCO_IMAGE_LOADER_TYPE) {
             holder.frescoImageItemBinding.setImage(image);
-        else
-            holder.glideImageItemBinding.setImage(image);
+        } else {
+            holder.glideOrPicassoImageItemBinding.setImage(image);
+            holder.glideOrPicassoImageItemBinding.setLoaderType(mLayoutType);
+        }
     }
 
     @Override
@@ -57,7 +55,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         FrescoImageItemBinding frescoImageItemBinding;
-        GlideImageItemBinding glideImageItemBinding;
+        GlideOrPicassoImageItemBinding glideOrPicassoImageItemBinding;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -68,7 +66,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder
             if (mLayoutType == ImagesActivity.FRESCO_IMAGE_LOADER_TYPE)
                 frescoImageItemBinding = DataBindingUtil.bind(view);
             else
-                glideImageItemBinding = DataBindingUtil.bind(view);
+                glideOrPicassoImageItemBinding = DataBindingUtil.bind(view);
         }
     }
 

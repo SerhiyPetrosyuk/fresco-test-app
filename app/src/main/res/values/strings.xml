@@ -3,4 +3,5 @@
     <string name="images_activity_title">Images</string>
     <string name="images_activity_title_fresco">Fresco</string>
     <string name="images_activity_title_glide">Glide</string>
+    <string name="images_activity_title_picasso">Picasso</string>
 </resources>

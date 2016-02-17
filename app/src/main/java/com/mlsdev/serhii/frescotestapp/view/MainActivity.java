@@ -38,5 +38,9 @@ public class MainActivity extends AppCompatActivity {
             startImagesActivity(ImagesActivity.GLIDE_IMAGE_LOADER_TYPE);
         }
 
+        public void onPicassoBtnClicked(View view) {
+            Log.i("FRESCO", "picasso btn was pressed");
+            startImagesActivity(ImagesActivity.PICASSO_IMAGE_LOADER_TYPE);
+        }
     }
 }
